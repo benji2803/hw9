@@ -1,32 +1,118 @@
-/* Small amount of CSS to make each assignment section a clear card. */
-* { box-sizing: border-box; }
+
+/* ==================================
+   Ben's Homelab Dashboard
+   CIT 384 - Homework 9
+   ================================== */
+
+/* General page styling */
 body {
   margin: 0;
-  background: #f2f5fa;
-  color: #202b3c;
-  font-family: Arial, Helvetica, sans-serif;
-  line-height: 1.6;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  background-color: #101820;
+  color: #e6edf3;
 }
-.container { max-width: 820px; margin: 0 auto; padding: 42px 20px 56px; }
-header { margin-bottom: 30px; }
-.eyebrow { color: #2f5da8; font-weight: bold; letter-spacing: .08em; text-transform: uppercase; font-size: 13px; }
-h1 { font-size: 36px; line-height: 1.15; margin: 8px 0 12px; }
-.intro { color: #556275; margin: 0; }
+
+/* Main dashboard container */
+.dashboard {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* Header */
+header {
+  padding: 25px 0;
+  border-bottom: 1px solid #344454;
+  margin-bottom: 25px;
+}
+
+h1 {
+  font-size: 36px;
+  margin-bottom: 5px;
+}
+
+.subtitle {
+  color: #a4b4c3;
+}
+
+.terminal {
+  color: #64dca5;
+  font-family: monospace;
+}
+
+/* System status */
+.status {
+  color: #64dca5;
+  font-size: 13px;
+  font-weight: bold;
+  margin-top: 20px;
+}
+
+/* Dashboard cards */
 .card {
-  background: white;
-  border: 1px solid #dbe3ee;
-  border-radius: 12px;
-  padding: 22px 26px;
-  margin-bottom: 18px;
-  box-shadow: 0 5px 18px rgba(30, 49, 82, .05);
+  background-color: #1b2935;
+  border: 1px solid #344454;
+  border-radius: 10px;
+  padding: 25px;
+  margin-bottom: 20px;
 }
-h2 { margin: 0 0 12px; color: #23497e; font-size: 21px; }
-p { margin: 8px 0; }
-.results { padding-left: 22px; margin-bottom: 0; }
-.results li { margin: 10px 0; overflow-wrap: anywhere; }
-.message { margin-top: 15px; padding: 10px 12px; border-left: 4px solid #2f5da8; background: #f2f6fc; }
-@media (max-width: 500px) {
-  .container { padding: 25px 14px; }
-  h1 { font-size: 29px; }
-  .card { padding: 18px; }
+
+/* Section headings */
+h2 {
+  color: #64dca5;
+  font-size: 20px;
+  margin-top: 0;
+}
+
+/* Descriptions */
+.description {
+  color: #a4b4c3;
+  font-size: 14px;
+}
+
+/* JavaScript output */
+#dateOutput {
+  font-size: 22px;
+  font-weight: bold;
+}
+
+#numberConversionOutput p,
+#mathOutput p {
+  background-color: #243442;
+  padding: 12px;
+  border-radius: 5px;
+  margin: 10px 0;
+  overflow-wrap: anywhere;
+}
+
+/* Conditional messages */
+.success {
+  color: #64dca5;
+}
+
+.warning {
+  color: #ffb86c;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  color: #a4b4c3;
+  font-size: 12px;
+  padding: 20px;
+}
+
+/* Small screens */
+@media (max-width: 600px) {
+  h1 {
+      font-size: 28px;
+  }
+
+  .card {
+      padding: 15px;
+  }
+
+  #dateOutput {
+      font-size: 18px;
+  }
 }

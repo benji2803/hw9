@@ -1,34 +1,56 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>JavaScript Mini Demo | CIT 384</title>
-  <link rel="stylesheet" href="style.css">
-  <script src="script.js" defer></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ben's Homelab | System Diagnostics</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <main class="container">
-    <header>
-      <p class="eyebrow">CIT 384 · Homework 9</p>
-      <h1>JavaScript Mini Demo</h1>
-      <p class="intro">Practicing JavaScript built-in objects, number conversion, and math.</p>
-    </header>
 
-    <section class="card" aria-labelledby="dateHeading">
-      <h2 id="dateHeading">1. Date Display</h2>
-      <p id="dateOutput">Loading today's date...</p>
-    </section>
+    <main class="dashboard">
 
-    <section class="card" aria-labelledby="conversionHeading">
-      <h2 id="conversionHeading">2. Number Conversion Tests</h2>
-      <div id="numberConversionOutput">Loading conversion results...</div>
-    </section>
+        <header>
+            <p class="terminal">ben@homelab:~$ system-status</p>
+            <h1>Ben's Homelab</h1>
+            <p class="subtitle">System Diagnostics Dashboard</p>
+            <p class="status">● DEMO SYSTEM ONLINE</p>
+        </header>
 
-    <section class="card" aria-labelledby="mathHeading">
-      <h2 id="mathHeading">3. Math and Number Formatting</h2>
-      <div id="mathOutput">Loading math results...</div>
-    </section>
-  </main>
+        <!-- Part 1: Date Display -->
+        <section class="card">
+            <h2>01 / System Date</h2>
+            <p id="dateOutput">Loading date...</p>
+        </section>
+
+        <!-- Part 2: Number Conversion -->
+        <section class="card">
+            <h2>02 / Number Conversion Tests</h2>
+            <p class="description">
+                Testing system configuration values using JavaScript.
+            </p>
+            <div id="numberConversionOutput"></div>
+        </section>
+
+        <!-- Part 3: Math and Number Formatting -->
+        <section class="card">
+            <h2>03 / Resource Calculations</h2>
+            <p class="description">
+                Calculating simulated homelab resource usage.
+            </p>
+            <div id="mathOutput"></div>
+        </section>
+
+        <footer>
+            <p>BEN-LAB | CIT 384 | JavaScript Homework 9</p>
+            <p>Simulated system data for educational purposes.</p>
+        </footer>
+
+    </main>
+
+    <!-- External JavaScript file -->
+    <script src="script.js"></script>
+
 </body>
 </html>

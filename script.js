@@ -1,108 +1,163 @@
-// CIT 384 - Homework 9: JavaScript Built-In Objects
 
-// ==========================
-// Part 1: Date Display
-// ==========================
-// Date gets today's date from the visitor's browser.
-const today = new Date();
-const month = String(today.getMonth() + 1).padStart(2, "0");
-const day = String(today.getDate()).padStart(2, "0");
-const year = today.getFullYear();
-const dateMessage = `Today is ${month}/${day}/${year}`;
+// ==========================================
+// Ben's Homelab - System Diagnostics
+// CIT 384 - Homework 9
+// ==========================================
+
+// PART 1: DATE DISPLAY
+
+// Create a Date object for today's date.
+let currentDate = new Date();
+
+// Get the month, day, and year.
+let month = currentDate.getMonth() + 1;
+let day = currentDate.getDate();
+let year = currentDate.getFullYear();
+
+// Add leading zeros to single-digit values.
+month = String(month).padStart(2, "0");
+day = String(day).padStart(2, "0");
+
+// Display the formatted date on the webpage.
+let dateMessage = "Today is " + month + "/" + day + "/" + year;
+
 document.getElementById("dateOutput").textContent = dateMessage;
 
-// ==========================
-// Part 2: Number Conversion
-// ==========================
-// Use separate variables and statements (no arrays or loops).
-const originalOne = "36";
-const originalTwo = "12.50";
-const originalThree = "banana";
-const originalFour = "250";
 
-// Number() attempts to convert each string to a number.
-const numberOne = Number(originalOne);
-const numberTwo = Number(originalTwo);
-const numberThree = Number(originalThree);
-const numberFour = Number(originalFour);
+// ==========================================
+// PART 2: NUMBER CONVERSION AND VALIDATION
+// ==========================================
 
-// Check whether each converted value is NaN or an integer.
-const isNaNOne = Number.isNaN(numberOne);
-const isNaNTwo = Number.isNaN(numberTwo);
-const isNaNThree = Number.isNaN(numberThree);
-const isNaNFour = Number.isNaN(numberFour);
-const isIntegerOne = Number.isInteger(numberOne);
-const isIntegerTwo = Number.isInteger(numberTwo);
-const isIntegerThree = Number.isInteger(numberThree);
-const isIntegerFour = Number.isInteger(numberFour);
+// Four separate simulated server configuration values.
+let ramValue = "16";
+let storageValue = "62.5";
+let serverStatus = "offline";
+let networkSpeed = "1000";
 
-// Create a separate display statement for each value.
-const resultOne = `Original: "${originalOne}" → Converted: ${numberOne} → isNaN: ${isNaNOne} → isInteger: ${isIntegerOne}`;
-const resultTwo = `Original: "${originalTwo}" → Converted: ${numberTwo} → isNaN: ${isNaNTwo} → isInteger: ${isIntegerTwo}`;
-const resultThree = `Original: "${originalThree}" → Converted: ${numberThree} → isNaN: ${isNaNThree} → isInteger: ${isIntegerThree}`;
-const resultFour = `Original: "${originalFour}" → Converted: ${numberFour} → isNaN: ${isNaNFour} → isInteger: ${isIntegerFour}`;
+// Convert each string using Number().
+let convertedRam = Number(ramValue);
+let convertedStorage = Number(storageValue);
+let convertedStatus = Number(serverStatus);
+let convertedSpeed = Number(networkSpeed);
 
-// First if/else: explain the non-numeric conversion.
-let validationMessage;
-if (Number.isNaN(numberThree)) {
-  validationMessage = "The word banana is not a valid number.";
+// Check whether each result is NaN.
+let ramIsNaN = Number.isNaN(convertedRam);
+let storageIsNaN = Number.isNaN(convertedStorage);
+let statusIsNaN = Number.isNaN(convertedStatus);
+let speedIsNaN = Number.isNaN(convertedSpeed);
+
+// Check whether each result is an integer.
+let ramIsInteger = Number.isInteger(convertedRam);
+let storageIsInteger = Number.isInteger(convertedStorage);
+let statusIsInteger = Number.isInteger(convertedStatus);
+let speedIsInteger = Number.isInteger(convertedSpeed);
+
+// Build a separate result for each value.
+// No arrays or loops are used.
+
+let ramResult =
+    "<p>RAM Configuration: Original: \"" + ramValue +
+    "\" | Converted: " + convertedRam +
+    " | isNaN: " + ramIsNaN +
+    " | isInteger: " + ramIsInteger + "</p>";
+
+let storageResult =
+    "<p>Storage Usage: Original: \"" + storageValue +
+    "\" | Converted: " + convertedStorage +
+    " | isNaN: " + storageIsNaN +
+    " | isInteger: " + storageIsInteger + "</p>";
+
+let statusResult =
+    "<p>Server Status: Original: \"" + serverStatus +
+    "\" | Converted: " + convertedStatus +
+    " | isNaN: " + statusIsNaN +
+    " | isInteger: " + statusIsInteger + "</p>";
+
+let speedResult =
+    "<p>Network Speed: Original: \"" + networkSpeed +
+    "\" | Converted: " + convertedSpeed +
+    " | isNaN: " + speedIsNaN +
+    " | isInteger: " + speedIsInteger + "</p>";
+
+
+// ==========================================
+// PART 4: CONDITIONAL STATEMENTS
+// ==========================================
+
+// First if/else: Check for an invalid number.
+let validationMessage = "";
+
+if (Number.isNaN(convertedStatus)) {
+    validationMessage =
+        "<p class='warning'>WARNING: Server status is not a valid number.</p>";
 } else {
-  validationMessage = "The word banana can be converted to a number.";
+    validationMessage =
+        "<p class='success'>Server status is a valid number.</p>";
 }
 
-// Second if/else: explain the decimal conversion.
-let integerMessage;
-if (Number.isInteger(numberTwo)) {
-  integerMessage = "12.50 is an integer.";
+// Second if/else: Check whether RAM is an integer.
+let integerMessage = "";
+
+if (Number.isInteger(convertedRam)) {
+    integerMessage =
+        "<p class='success'>RAM configuration is a whole number.</p>";
 } else {
-  integerMessage = "12.50 is not an integer because it has a decimal part.";
+    integerMessage =
+        "<p class='warning'>RAM configuration is not a whole number.</p>";
 }
 
-// Show the four results as a list and display both conditional messages.
-// textContent is used for values so the browser displays them as plain text.
-const conversionOutput = document.getElementById("numberConversionOutput");
-const resultsList = document.createElement("ul");
-resultsList.className = "results";
+// Combine and display all conversion results.
+let conversionResults =
+    ramResult +
+    storageResult +
+    statusResult +
+    speedResult +
+    validationMessage +
+    integerMessage;
 
-const itemOne = document.createElement("li");
-itemOne.textContent = resultOne;
-resultsList.appendChild(itemOne);
-const itemTwo = document.createElement("li");
-itemTwo.textContent = resultTwo;
-resultsList.appendChild(itemTwo);
-const itemThree = document.createElement("li");
-itemThree.textContent = resultThree;
-resultsList.appendChild(itemThree);
-const itemFour = document.createElement("li");
-itemFour.textContent = resultFour;
-resultsList.appendChild(itemFour);
-conversionOutput.replaceChildren(resultsList);
+document.getElementById("numberConversionOutput").innerHTML =
+    conversionResults;
 
-const conversionMessage = document.createElement("p");
-conversionMessage.className = "message";
-conversionMessage.textContent = `${validationMessage} ${integerMessage}`;
-conversionOutput.appendChild(conversionMessage);
 
-// ==========================
-// Part 3: Math and Formatting
-// ==========================
-// A small price calculator with three numeric values.
-const itemPrice = 24.99;
-const shippingCost = 5.50;
-const taxRate = 0.095;
-const subtotal = itemPrice + shippingCost; // Addition
-const taxAmount = itemPrice * taxRate;      // Multiplication
-const total = subtotal + taxAmount;         // Addition
-const budget = 40;
-const remainingBudget = budget - total;     // Subtraction
+// ==========================================
+// PART 3: MATH AND NUMBER FORMATTING
+// ==========================================
 
-// toFixed(2) displays money with exactly two decimal places.
-const mathOutput = document.getElementById("mathOutput");
-mathOutput.innerHTML =
-  `<p>Item price: $${itemPrice.toFixed(2)}</p>` +
-  `<p>Shipping: $${shippingCost.toFixed(2)}</p>` +
-  `<p>Tax rate: ${(taxRate * 100).toFixed(1)}%</p>` +
-  `<p>Subtotal: $${subtotal.toFixed(2)}</p>` +
-  `<p>Tax on item: $${taxAmount.toFixed(2)}</p>` +
-  `<p><strong>Total: $${total.toFixed(2)}</strong></p>` +
-  `<p>Money left from a $${budget.toFixed(2)} budget: $${remainingBudget.toFixed(2)}</p>`;
+// Simulated homelab resource values.
+let totalStorage = 1000;
+let usedStorage = 625;
+let reservedStorage = 50;
+
+// Subtraction: Calculate available storage.
+let availableStorage = totalStorage - usedStorage;
+
+// Addition: Calculate used and reserved storage.
+let allocatedStorage = usedStorage + reservedStorage;
+
+// Division and multiplication: Calculate usage percentage.
+let usagePercentage = (usedStorage / totalStorage) * 100;
+
+// Format numeric results to two decimal places.
+let formattedUsage = usagePercentage.toFixed(2);
+let formattedAvailable = availableStorage.toFixed(2);
+
+// Build the math results.
+let mathResults =
+    "<p>Total Storage: " + totalStorage + " GB</p>" +
+    "<p>Used Storage: " + usedStorage + " GB</p>" +
+    "<p>Reserved Storage: " + reservedStorage + " GB</p>" +
+    "<p>Allocated Storage: " + allocatedStorage + " GB</p>" +
+    "<p>Available Storage: " + formattedAvailable + " GB</p>" +
+    "<p>Storage Usage: " + formattedUsage + "%</p>";
+
+// Third if/else: Check resource usage.
+if (usagePercentage >= 80) {
+    mathResults +=
+        "<p class='warning'>WARNING: Storage usage is high.</p>";
+} else {
+    mathResults +=
+        "<p class='success'>Storage usage is within normal limits.</p>";
+}
+
+// Display the math results on the webpage.
+document.getElementById("mathOutput").innerHTML = mathResults;
